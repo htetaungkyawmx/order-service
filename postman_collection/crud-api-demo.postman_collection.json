@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "f80bfbad-a37c-400c-8506-13f2407ab0d8",
+		"name": "crud-api-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33520293"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/orders",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"location\": \"TAKE_AWAY\",\n  \"items\": [\n    {\n      \"drink\": \"LATTE\",\n      \"size\": \"SMALL\",\n      \"milk\": \"WHOLE\",\n      \"quantity\": 1\n    },\n    {\n      \"drink\": \"ESPRESSO\",\n      \"size\": \"SMALL\",\n      \"milk\": \"SOY\",\n      \"quantity\": 2\n    }\n  ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/orders",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"location\": \"TAKE_AWAY\",\n  \"items\": [\n    {\n      \"drink\": \"LATTE\",\n      \"size\": \"SMALL\",\n      \"milk\": \"WHOLE\",\n      \"quantity\": 2\n    }\n  ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/c8ceeebe-ef2a-4ce7-a51f-13b2e14d1251",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"c8ceeebe-ef2a-4ce7-a51f-13b2e14d1251"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/orders",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
