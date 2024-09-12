@@ -1,6 +1,7 @@
 package org.cafe.orderservice.client;
 
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.cafe.orderservice.domain.PaymentRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component
+@Slf4j
 public class PaymentClient {
     @Value("${payment-service.host}")
     private String host;
@@ -40,7 +42,9 @@ public class PaymentClient {
             HttpEntity<PaymentRequest> requestEntity = new HttpEntity<>(paymentRequest, headers);
             String buildURL = url + "create-payment";
             ResponseEntity<String> responseEntity = restTemplate.postForEntity(buildURL, requestEntity, String.class);
-            return responseEntity.getBody();
+            String result = responseEntity.getBody();
+            log.info("Payment request result: {}" + result);
+            return result;
         }catch (Exception e) {
             throw new RuntimeException(e);
         }

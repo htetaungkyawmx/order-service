@@ -1,7 +1,9 @@
 package org.cafe.orderservice.controller;
 
 import org.cafe.commons.entity.OrderEntity;
+import org.cafe.orderservice.client.PaymentClient;
 import org.cafe.orderservice.domain.OrderRequest;
+import org.cafe.orderservice.domain.PaymentRequest;
 import org.cafe.orderservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,14 +16,16 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/orders")
 public class OrderController {
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private PaymentClient paymentClient;
 
-    @PostMapping
+    @PostMapping("/create-order")
     public ResponseEntity<OrderEntity> createOrder(@Validated @RequestBody OrderRequest orderRequest, BindingResult result) {
         OrderEntity orderEntity = orderService.save(orderRequest);
+        paymentClient.pay(new PaymentRequest());
         return ResponseEntity.ok(orderEntity);
     }
 
