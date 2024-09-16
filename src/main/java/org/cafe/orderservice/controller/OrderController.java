@@ -25,7 +25,6 @@ public class OrderController {
     @PostMapping("/create-order")
     public ResponseEntity<OrderEntity> createOrder(@Validated @RequestBody OrderRequest orderRequest, BindingResult result) {
         OrderEntity orderEntity = orderService.save(orderRequest);
-        paymentClient.pay(new PaymentRequest());
         return ResponseEntity.ok(orderEntity);
     }
 
